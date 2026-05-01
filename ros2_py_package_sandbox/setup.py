@@ -14,7 +14,7 @@ setup(
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='labrecqb',
-    maintainer_email='labrecque.benji@gmail.com',
+    maintainer_email='',
     description='TODO: Package description',
     license='Apache-2.0',
     extras_require={
@@ -24,7 +24,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'my_node = ros2_py_package_sandbox.my_node:main'
+            'my_node = ros2_py_package_sandbox.my_node:main',
+            'imu = ros2_py_package_sandbox.imu:main'
         ],
     },
 )

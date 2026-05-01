@@ -1,5 +1,7 @@
 # ROS 2 Workspace
 
+## Tutorial
+
 https://docs.ros.org/en/jazzy/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html
 
 Installing the examples:
@@ -24,7 +26,7 @@ ros2 pkg create --build-type ament_python --license Apache-2.0 --node-name my_no
 colcon build --symlink-install --packages-select ros2_py_package_sandbox
 ```
 
-## Use package
+## Using a package
 
 In a NEW terminal:
 
