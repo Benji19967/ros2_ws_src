@@ -9,7 +9,7 @@ ARDUINO_PORT = "/dev/ttyACM0"
 class ImuBridge(Node):
     def __init__(self):
         super().__init__("imu_bridge_node")
-        self.publisher_ = self.create_publisher(Imu, "imu/data", 10)
+        self.publisher_ = self.create_publisher(Imu, "imu/data_raw", 10)
         self.ser = serial.Serial(ARDUINO_PORT, 38400, timeout=1)
         self.timer = self.create_timer(0.01, self.timer_callback)
 
@@ -24,12 +24,6 @@ class ImuBridge(Node):
                     msg = Imu()
                     msg.header.stamp = self.get_clock().now().to_msg()
                     msg.header.frame_id = "imu_link"
-
-                    # Create an identity quaternion (facing forward, no tilt)
-                    msg.orientation.x = 0.0
-                    msg.orientation.y = 0.0
-                    msg.orientation.z = 0.0
-                    msg.orientation.w = 1.0
 
                     # Convert raw to m/s^2 (assuming +/- 2g range)
                     msg.linear_acceleration.x = float(data[0]) * (9.806 / 16384.0)
